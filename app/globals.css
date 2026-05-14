@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* light theme */
+  --bg: 255 255 255;
+  --surface: 250 250 250;
+  --fg: 10 10 10;
+  --muted: 82 82 91;
+  --subtle: 161 161 170;
+  --line: 228 228 231;
+  --accent: 16 185 129;
+}
+
+.dark {
+  /* dark theme */
+  --bg: 10 10 10;
+  --surface: 17 17 17;
+  --fg: 250 250 250;
+  --muted: 161 161 170;
+  --subtle: 113 113 122;
+  --line: 31 31 35;
+  --accent: 52 211 153;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+  border-color: rgb(var(--line));
+}
+
+html {
+  scroll-behavior: smooth;
+  background: rgb(var(--bg));
+  color: rgb(var(--fg));
+  font-feature-settings: 'ss01', 'cv11';
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: rgb(var(--bg));
+  color: rgb(var(--fg));
+  overflow-x: hidden;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+::selection {
+  background: rgb(var(--fg));
+  color: rgb(var(--bg));
+}
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgb(var(--line)); border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: rgb(var(--subtle)); }
+
+/* Utility — micro grid line backdrop, very subtle */
+.grid-bg {
+  background-image:
+    linear-gradient(to right, rgb(var(--line) / 0.6) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(var(--line) / 0.6) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse at top, rgb(0 0 0) 0%, transparent 70%);
+}
+
+.tight {
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+}
+
+/* Subtle underline animation for inline links */
+.link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.link::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: -2px;
+  height: 1px;
+  background: currentColor;
+  transform-origin: right;
+  transform: scaleX(1);
+  transition: transform 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.link:hover::after {
+  transform-origin: left;
+  transform: scaleX(0);
+  animation: linkRedraw 0.7s cubic-bezier(0.65, 0, 0.35, 1) 0.5s forwards;
+}
+@keyframes linkRedraw {
+  from { transform: scaleX(0); transform-origin: left; }
+  to { transform: scaleX(1); transform-origin: left; }
+}
+
+/* Status dot */
+.status-dot {
+  position: relative;
+  display: inline-block;
+  width: 8px; height: 8px;
+  border-radius: 9999px;
+  background: rgb(var(--accent));
+}
+.status-dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: rgb(var(--accent));
+  animation: pulseDot 2s ease-out infinite;
+}
+@keyframes pulseDot {
+  0% { transform: scale(1); opacity: 0.7; }
+  100% { transform: scale(2.8); opacity: 0; }
+}
+
+/* Theme toggle smooth icon swap */
+.theme-icon {
+  transition: transform 0.5s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.25s;
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
