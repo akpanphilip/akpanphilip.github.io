@@ -129,13 +129,62 @@ export default function Work() {
   };
 
   return (
-    <section id="work" className="py-24 md:py-36 border-t">
-      <div className="mx-auto max-w-6xl px-6 md:px-10">
+    <section id="work" className="py-20 md:py-36 border-t">
+      <div className="mx-auto max-w-6xl px-5 md:px-10">
         <SectionLabel index="01" title="Selected work" />
-        <h2 className="mt-6 tight text-4xl md:text-6xl tracking-tightest text-balance max-w-3xl">
+        <h2 className="mt-5 md:mt-6 tight text-[2rem] md:text-6xl tracking-tightest text-balance max-w-3xl">
           A few things I&apos;ve <span className="text-muted">designed &amp; shipped</span> recently.
         </h2>
+      </div>
 
+      {/* Mobile — horizontal snap rail of card previews */}
+      <div className="md:hidden mt-10">
+        <div className="flex items-center justify-between px-5 pb-3 font-mono text-[10px] uppercase tracking-[0.18em] text-subtle">
+          <span>{String(PROJECTS.length).padStart(2, '0')} projects</span>
+          <span>Swipe →</span>
+        </div>
+        <div className="snap-rail flex gap-3 overflow-x-auto px-5 pb-2">
+          {PROJECTS.map((p) => (
+            <a
+              key={p.url}
+              href={p.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="snap-item tap-press group flex w-[78vw] max-w-[320px] shrink-0 flex-col overflow-hidden rounded-2xl border bg-surface"
+            >
+              <div className="relative aspect-[4/3] w-full overflow-hidden bg-bg">
+                <Image
+                  src={p.img}
+                  alt={p.title}
+                  fill
+                  sizes="(max-width: 768px) 78vw, 320px"
+                  className="object-cover object-top"
+                />
+                <span className="absolute right-3 top-3 inline-flex h-8 w-8 items-center justify-center rounded-full bg-bg/85 backdrop-blur-sm">
+                  <ArrowUpRight className="h-4 w-4" />
+                </span>
+              </div>
+              <div className="flex flex-col gap-2 p-4">
+                <div className="flex items-baseline justify-between gap-2">
+                  <h3 className="text-lg font-medium tracking-tight">{p.title}</h3>
+                  <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-subtle">{p.role}</span>
+                </div>
+                <p className="line-clamp-2 text-[13px] leading-relaxed text-muted">{p.description}</p>
+                <div className="mt-1 flex flex-wrap gap-1.5">
+                  {p.stack.slice(0, 3).map((t) => (
+                    <span key={t} className="rounded-full border px-2 py-0.5 font-mono text-[10px] text-muted">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      {/* Desktop — list with floating preview */}
+      <div className="hidden md:block mx-auto max-w-6xl px-6 md:px-10">
         <div
           ref={containerRef}
           onMouseMove={onMove}
@@ -199,14 +248,14 @@ export default function Work() {
             ))}
           </ul>
         </div>
+      </div>
 
-        <div className="mt-10 text-sm text-muted">
-          More on{' '}
-          <a href="https://github.com/akpanphilip" target="_blank" rel="noopener noreferrer" className="link text-fg">
-            GitHub
-            <ArrowUpRight className="h-3.5 w-3.5" />
-          </a>
-        </div>
+      <div className="mx-auto max-w-6xl px-5 md:px-10 mt-8 md:mt-10 text-sm text-muted">
+        More on{' '}
+        <a href="https://github.com/akpanphilip" target="_blank" rel="noopener noreferrer" className="link text-fg">
+          GitHub
+          <ArrowUpRight className="h-3.5 w-3.5" />
+        </a>
       </div>
     </section>
   );

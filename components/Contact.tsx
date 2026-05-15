@@ -10,13 +10,13 @@ const SOCIALS = [
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-24 md:py-36 border-t">
-      <div className="mx-auto max-w-6xl px-6 md:px-10">
+    <section id="contact" className="py-20 md:py-36 border-t">
+      <div className="mx-auto max-w-6xl px-5 md:px-10">
         <SectionLabel index="03" title="Contact" />
 
-        <div className="mt-10 grid grid-cols-12 gap-10">
+        <div className="mt-8 md:mt-10 grid grid-cols-12 gap-8 md:gap-10">
           <div className="col-span-12 md:col-span-7">
-            <h2 className="tight text-balance text-5xl md:text-7xl tracking-tightest">
+            <h2 className="tight text-balance text-[2.25rem] md:text-7xl tracking-tightest">
               Have a project in mind?
               <br />
               <span className="text-muted">Let&apos;s talk.</span>
@@ -24,19 +24,19 @@ export default function Contact() {
 
             <a
               href="mailto:akpanphilip1122@gmail.com"
-              className="group mt-10 inline-flex items-center gap-3 text-2xl md:text-4xl font-medium tracking-tight"
+              className="group mt-8 md:mt-10 inline-flex max-w-full items-center gap-2 md:gap-3 text-[1.25rem] md:text-4xl font-medium tracking-tight break-all"
             >
               <span className="link">akpanphilip1122@gmail.com</span>
-              <ArrowUpRight className="h-6 w-6 md:h-8 md:w-8 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
+              <ArrowUpRight className="h-5 w-5 md:h-8 md:w-8 shrink-0 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
             </a>
 
-            <p className="mt-6 max-w-md text-muted">
+            <p className="mt-5 md:mt-6 max-w-md text-[15px] md:text-base text-muted">
               Open to freelance, contract or full-time engineering roles. I usually reply within a day.
             </p>
           </div>
 
           <div className="col-span-12 md:col-span-5 md:pl-10">
-            <div className="font-mono text-xs uppercase tracking-[0.18em] text-muted border-b pb-3">Elsewhere</div>
+            <div className="font-mono text-[11px] md:text-xs uppercase tracking-[0.18em] text-muted border-b pb-3">Elsewhere</div>
             <ul>
               {SOCIALS.map((s) => (
                 <li key={s.label} className="border-b">
@@ -44,7 +44,7 @@ export default function Contact() {
                     href={s.href}
                     target={s.href.startsWith('http') ? '_blank' : undefined}
                     rel="noopener noreferrer"
-                    className="group flex items-center justify-between py-4"
+                    className="tap-press group flex items-center justify-between py-4 md:py-4"
                   >
                     <span className="text-base md:text-lg">{s.label}</span>
                     <span className="flex items-center gap-2 text-sm text-muted transition-colors group-hover:text-fg">
