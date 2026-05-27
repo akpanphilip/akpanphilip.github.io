@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import { ArrowUpRight } from 'lucide-react';
-import SectionLabel from './SectionLabel';
-import { useRef, useState, type MouseEvent } from 'react';
+import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
+import SectionLabel from "./SectionLabel";
+import { useRef, useState, type MouseEvent } from "react";
 
 type Project = {
   title: string;
@@ -16,100 +16,137 @@ type Project = {
 
 const PROJECTS: Project[] = [
   {
-    title: 'NaijaMart',
-    role: 'Full-stack',
-    description: 'Multi-vendor e-commerce platform with seller dashboards, payments and logistics integrations.',
-    url: 'https://naijamart.com',
-    img: '/images/naijamart.png',
-    stack: ['Next.js', 'Laravel', 'MySQL', 'Tailwind'],
+    title: "PromptEdit",
+    role: "Frontend",
+    description:
+      "An AI Grocery store for AI Models for video content creators.",
+    url: "https://promptedit-orcin.vercel.app/",
+    img: "/images/promptedit.png",
+    stack: ["Next.js", "Tailwind"],
   },
   {
-    title: 'Motor Africa',
-    role: 'Frontend',
-    description: 'Automotive marketplace for buying and selling vehicles across the continent.',
-    url: 'https://motorafrica.co',
-    img: '/images/motorafrica.png',
-    stack: ['Laravel Blade', 'Tailwind'],
+    title: "NaijaMart",
+    role: "Full-stack",
+    description:
+      "Multi-vendor e-commerce platform with seller dashboards, payments and logistics integrations.",
+    url: "https://naijamart.com",
+    img: "/images/naijamart.png",
+    stack: ["Next.js", "Laravel", "MySQL", "Tailwind"],
   },
   {
-    title: 'MS Space Global',
-    role: 'Full-stack',
-    description: 'Corporate site with custom CMS for a real estate and infrastructure firm.',
-    url: 'https://msspaceglobal.com',
-    img: '/images/msspace.png',
-    stack: ['Next.js', 'Laravel'],
+    title: "MedXpress",
+    role: "Frontend",
+    description:
+      "Online pharmacy platform with prescription upload, medication browsing and order tracking.",
+    url: "https://web-medxpress.vercel.app/",
+    img: "/images/medxpress.png",
+    stack: ["Next.js", "Tailwind"],
+  },
+  // {
+  //   title: "Motor Africa",
+  //   role: "Frontend",
+  //   description:
+  //     "Automotive marketplace for buying and selling vehicles across the continent.",
+  //   url: "https://motorafrica.co",
+  //   img: "/images/motorafrica.png",
+  //   stack: ["Laravel Blade", "Tailwind"],
+  // },
+  {
+    title: "Sergio Castro Homes",
+    role: "Frontend",
+    description:
+      "Real estate landing page with custom CMS for property listings and agent profiles.",
+    url: "https://sergiocastrohomes.com",
+    img: "/images/sergio.webp",
+    stack: ["Next.js", "Tailwind"],
   },
   {
-    title: 'Brandroom',
-    role: 'Frontend',
-    description: 'Marketing site for a creative agency, designed for clarity and conversion.',
-    url: 'https://brandroom.io',
-    img: '/images/brandroom.png',
-    stack: ['Next.js', 'Tailwind'],
+    title: "MS Space Global",
+    role: "Full-stack",
+    description:
+      "Corporate site with custom CMS for a real estate and infrastructure firm.",
+    url: "https://msspaceglobal.com",
+    img: "/images/msspace.webp",
+    stack: ["Next.js", "Laravel"],
   },
   {
-    title: 'LearnX Africa',
-    role: 'Full-stack',
-    description: 'EdTech platform offering structured tech learning paths for African students.',
-    url: 'https://learn-x-africa.vercel.app',
-    img: '/images/learnx.png',
-    stack: ['React', 'Node', 'PostgreSQL'],
+    title: "Brandroom",
+    role: "Frontend",
+    description:
+      "Marketing site for a creative agency, designed for clarity and conversion.",
+    url: "https://brandroom.io",
+    img: "/images/brandroom.png",
+    stack: ["Next.js", "Tailwind"],
   },
   {
-    title: 'Prime Progress',
-    role: 'Full-stack',
-    description: 'Independent newsroom covering solutions journalism across Nigeria.',
-    url: 'https://primeprogressng.com',
-    img: '/images/prime.png',
-    stack: ['Laravel', 'Bootstrap', 'MySQL'],
+    title: "LearnX Africa",
+    role: "Full-stack",
+    description:
+      "EdTech platform offering structured tech learning paths for African students.",
+    url: "https://learn-x-africa.vercel.app",
+    img: "/images/learnx.png",
+    stack: ["React", "Node", "PostgreSQL"],
   },
   {
-    title: 'Fleet Onboarding',
-    role: 'Full-stack',
-    description: 'SaaS onboarding flow for fleet operators — driver and vehicle registration.',
-    url: 'https://fleet-onboarding.vercel.app',
-    img: '/images/fleetOnboarding.png',
-    stack: ['Next.js', 'TypeScript'],
+    title: "Prime Progress",
+    role: "Full-stack",
+    description:
+      "Independent newsroom covering solutions journalism across Nigeria.",
+    url: "https://primeprogressng.com",
+    img: "/images/prime.png",
+    stack: ["Laravel", "Bootstrap", "MySQL"],
   },
   {
-    title: 'Shedrach',
-    role: 'Full-stack',
-    description: 'Personal brand site with editorial layout and content management.',
-    url: 'https://shedrach.com',
-    img: '/images/shedrach.png',
-    stack: ['Laravel', 'Tailwind'],
+    title: "Fleet Onboarding",
+    role: "Full-stack",
+    description:
+      "SaaS onboarding flow for fleet operators — driver and vehicle registration.",
+    url: "https://fleet-onboarding.vercel.app",
+    img: "/images/fleetOnboarding.png",
+    stack: ["Next.js", "TypeScript"],
   },
   {
-    title: 'Small Chops',
-    role: 'Frontend',
-    description: 'Food ordering web app with cart, checkout and order tracking.',
-    url: 'https://small-chops.vercel.app',
-    img: '/images/smallchops.png',
-    stack: ['React', 'Tailwind'],
+    title: "Shedrach",
+    role: "Frontend",
+    description:
+      "Personal brand site with editorial layout and content management.",
+    url: "https://shedrach.com",
+    img: "/images/shedrach.png",
+    stack: ["Laravel Blade", "Bootstrap"],
   },
   {
-    title: 'TalkIt',
-    role: 'Frontend',
-    description: 'Social conversation app with real-time threads.',
-    url: 'https://talkit-kappa.vercel.app',
-    img: '/images/talkit.png',
-    stack: ['React', 'Socket.io'],
+    title: "Small Chops",
+    role: "Frontend",
+    description:
+      "Food ordering web app with cart, checkout and order tracking.",
+    url: "https://small-chops.vercel.app",
+    img: "/images/smallchops.png",
+    stack: ["React", "Tailwind"],
   },
   {
-    title: 'SOBP',
-    role: 'Full-stack',
-    description: 'Society for Best Practices — non-profit healthcare information site.',
-    url: 'https://sandbp.net',
-    img: '/images/sobp.png',
-    stack: ['Laravel', 'Bootstrap', 'MySQL'],
+    title: "TalkIt",
+    role: "Frontend",
+    description: "Social conversation app with real-time threads.",
+    url: "https://talkit-kappa.vercel.app",
+    img: "/images/talkit.png",
+    stack: ["React", "Socket.io"],
   },
   {
-    title: 'Yummee',
-    role: 'Frontend',
-    description: 'Restaurant landing experience with menu browsing.',
-    url: 'https://yummee22.netlify.app',
-    img: '/images/yummie.png',
-    stack: ['Next.js', 'Tailwind'],
+    title: "SOBP",
+    role: "Full-stack",
+    description:
+      "Society for Best Practices — non-profit healthcare information site.",
+    url: "https://sandbp.net",
+    img: "/images/sobp.webp",
+    stack: ["Laravel", "Bootstrap", "MySQL"],
+  },
+  {
+    title: "Yummee",
+    role: "Frontend",
+    description: "Restaurant landing experience with menu browsing.",
+    url: "https://yummee22.netlify.app",
+    img: "/images/yummie.webp",
+    stack: ["Next.js", "Tailwind"],
   },
 ];
 
@@ -133,14 +170,15 @@ export default function Work() {
       <div className="mx-auto max-w-6xl px-5 md:px-10">
         <SectionLabel index="01" title="Selected work" />
         <h2 className="mt-5 md:mt-6 tight text-[2rem] md:text-6xl tracking-tightest text-balance max-w-3xl">
-          A few things I&apos;ve <span className="text-muted">designed &amp; shipped</span> recently.
+          A few things I&apos;ve{" "}
+          <span className="text-muted">designed &amp; shipped</span> recently.
         </h2>
       </div>
 
       {/* Mobile — horizontal snap rail of card previews */}
       <div className="md:hidden mt-10">
         <div className="flex items-center justify-between px-5 pb-3 font-mono text-[10px] uppercase tracking-[0.18em] text-subtle">
-          <span>{String(PROJECTS.length).padStart(2, '0')} projects</span>
+          <span>{String(PROJECTS.length).padStart(2, "0")} projects</span>
           <span>Swipe →</span>
         </div>
         <div className="snap-rail flex gap-3 overflow-x-auto px-5 pb-2">
@@ -166,13 +204,22 @@ export default function Work() {
               </div>
               <div className="flex flex-col gap-2 p-4">
                 <div className="flex items-baseline justify-between gap-2">
-                  <h3 className="text-lg font-medium tracking-tight">{p.title}</h3>
-                  <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-subtle">{p.role}</span>
+                  <h3 className="text-lg font-medium tracking-tight">
+                    {p.title}
+                  </h3>
+                  <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-subtle">
+                    {p.role}
+                  </span>
                 </div>
-                <p className="line-clamp-2 text-[13px] leading-relaxed text-muted">{p.description}</p>
+                <p className="line-clamp-2 text-[13px] leading-relaxed text-muted">
+                  {p.description}
+                </p>
                 <div className="mt-1 flex flex-wrap gap-1.5">
                   {p.stack.slice(0, 3).map((t) => (
-                    <span key={t} className="rounded-full border px-2 py-0.5 font-mono text-[10px] text-muted">
+                    <span
+                      key={t}
+                      className="rounded-full border px-2 py-0.5 font-mono text-[10px] text-muted"
+                    >
                       {t}
                     </span>
                   ))}
@@ -195,7 +242,7 @@ export default function Work() {
           <div
             ref={previewRef}
             className={`pointer-events-none absolute left-0 top-0 z-20 hidden lg:block transition-opacity duration-200 ${
-              hover !== null ? 'opacity-100' : 'opacity-0'
+              hover !== null ? "opacity-100" : "opacity-0"
             }`}
           >
             <div className="relative h-56 w-80 overflow-hidden rounded-xl ring-1 ring-line shadow-2xl bg-surface">
@@ -238,7 +285,10 @@ export default function Work() {
 
                   <div className="col-span-12 md:col-span-2 flex flex-wrap gap-1.5 md:justify-end">
                     {p.stack.slice(0, 3).map((t) => (
-                      <span key={t} className="rounded-full border px-2 py-0.5 font-mono text-[10px] text-muted">
+                      <span
+                        key={t}
+                        className="rounded-full border px-2 py-0.5 font-mono text-[10px] text-muted"
+                      >
                         {t}
                       </span>
                     ))}
@@ -251,8 +301,13 @@ export default function Work() {
       </div>
 
       <div className="mx-auto max-w-6xl px-5 md:px-10 mt-8 md:mt-10 text-sm text-muted">
-        More on{' '}
-        <a href="https://github.com/akpanphilip" target="_blank" rel="noopener noreferrer" className="link text-fg">
+        More on{" "}
+        <a
+          href="https://github.com/akpanphilip"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="link text-fg"
+        >
           GitHub
           <ArrowUpRight className="h-3.5 w-3.5" />
         </a>
