@@ -56,7 +56,7 @@ const PROJECTS: Project[] = [
     role: "Frontend",
     description:
       "Real estate landing page with custom CMS for property listings and agent profiles.",
-    url: "https://sergiocastrohomes.com",
+    url: "https://sergio-castro-homes.vercel.app",
     img: "/images/sergio.webp",
     stack: ["Next.js", "Tailwind"],
   },
