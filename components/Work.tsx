@@ -34,6 +34,15 @@ const PROJECTS: Project[] = [
     stack: ["Next.js", "Laravel", "MySQL", "Tailwind"],
   },
   {
+    title: "OneMall",
+    role: "Full-stack",
+    description:
+      "A modern e-commerce marketplace built with Laravel and Next.js, connecting customers with plazas, shops, and sellers in one convenient online marketplace.",
+    url: "https://onemall.ng",
+    img: "/images/onemall.png",
+    stack: ["Next.js", "Laravel", "MySQL", "Tailwind"],
+  },
+  {
     title: "MedXpress",
     role: "Frontend",
     description:
